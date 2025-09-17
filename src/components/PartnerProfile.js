@@ -1,8 +1,19 @@
 import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import "./PartnerProfile.css";
 import PropertyList from "./PropertyList";
 
 const PartnerProfile = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+  axios.get("https://mobileapi.sarhul.com/api/fetch-nearby-property?page=1&lat=12.9716&lng=77.5946&radius=1000&tag=&search=&looking_for=&user_uuid=1a33f2ee-d024-4161-87c6-814c9705ac6f")
+    .then((response) => {
+      console.log(response.data); 
+      setData(response.data);
+    })
+    .catch((error) => console.error(error));
+}, []);
   const partner = {
     name: "Akshitha Dafedar",
     email: "akshitha@example.com",
@@ -45,6 +56,14 @@ const PartnerProfile = () => {
       {/* Profile Header */}
       <div className="profile-header">
         <img src={partner.avatar} alt={partner.name} className="profile-avatar" />
+        <div>
+  <h2>Users List</h2>
+  <ul>
+    {Array.isArray(data) ? data.map(item => (
+  <div>{item.name}</div>
+)) : null}
+  </ul>
+</div>
         <div className="profile-info">
           <h2>{partner.name}</h2>
           <p>{partner.email}</p>
