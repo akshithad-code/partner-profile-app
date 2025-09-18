@@ -1,16 +1,12 @@
-import React from "react";
+import React from 'react';
 
-function ProfileHeader({ name, email, location, avatar }) {
+const ProfileHeader = ({ partner }) => {
   return (
-    <div className="profile-header">
-      <img src={avatar} alt={name} />
-      <div>
-        <h2>{name}</h2>
-        <p>Email: {email}</p>
-        <p>Location: {location}</p>
-      </div>
+    <div>
+      <h1>{partner.name || 'No Name Available'}</h1>
+      <p>Email: {partner.email || 'No Email Available'}</p>
     </div>
   );
-}
+};
 
 export default ProfileHeader;

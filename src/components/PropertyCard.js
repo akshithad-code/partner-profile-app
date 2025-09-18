@@ -1,37 +1,23 @@
+import React from 'react';
 
-import React from "react";
-
-function PropertyCard({ property }) {
-  if (!property) return null;
-
-  const title = property.title || property.name || "Untitled Property";
-  const location = property.location || "Unknown location";
-  const description = property.description || "";
-  const imageUrl = property.imageUrl || property.image || "";
-  const price = property.price || "";
-
+const PropertyCard = ({ property }) => {
   return (
-    <div
-      style={{
-        border: "1px solid #ccc",
-        padding: 12,
-        borderRadius: 8,
-        background: "#f9f9f9",
-      }}
-    >
-      {imageUrl && (
-        <img
-          src={imageUrl}
-          alt={title}
-          style={{ maxWidth: "100%", marginBottom: 10, borderRadius: 5 }}
-        />
-      )}
-      <h3>{title}</h3>
-      <p><strong>Location:</strong> {location}</p>
-      {description && <p>{description}</p>}
-      {price && <p><strong>Price:</strong> {price}</p>}
+    <div style={{ border: '1px solid gray', padding: '10px', marginBottom: '10px' }}>
+      <h2>{property.property_name || 'No Title'}</h2>
+      <p>Category: {property.category_name}</p>
+      <p>Subcategory: {property.sub_category_name}</p>
+      <p>Type: {property.property_type}</p>
+      <p>Rent Price: {property.rent_price || 'N/A'}</p>
+      <p>Location: {property.location}</p>
+      <p>Status: {property.status}</p>
+      <p>Created by: {property.created_by?.name}</p>
+      <img
+        src={property.cover_image?.url}
+        alt={property.property_name}
+        style={{ width: '100%', maxWidth: '300px', marginTop: '10px' }}
+      />
     </div>
   );
-}
+};
 
 export default PropertyCard;

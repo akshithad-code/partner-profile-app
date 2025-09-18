@@ -1,12 +1,11 @@
-import React from "react";
+import React from 'react';
 
-function StatsCard({ label, value }) {
+const StatsCard = ({ properties }) => {
   return (
-    <div className="stats-card">
-      <h3>{value}</h3>
-      <p>{label}</p>
+    <div>
+      <h3>Total Properties: {properties ? properties.length : 0}</h3>
     </div>
   );
-}
+};
 
 export default StatsCard;

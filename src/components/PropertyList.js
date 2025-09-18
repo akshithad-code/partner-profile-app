@@ -1,16 +1,18 @@
-import React from "react";
-import PropertyCard from "./PropertyCard";
+import React from 'react';
+import PropertyCard from './PropertyCard';
 
-export default function PropertyList({ properties = [] }) {
+const PropertyList = ({ properties }) => {
   if (!properties || properties.length === 0) {
-    return <p>No properties found.</p>;
+    return <p>No properties found</p>;
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-      {properties.map((prop, idx) => (
-        <PropertyCard key={prop.id || prop._id || idx} property={prop} />
+    <div>
+      {properties.map((property) => (
+        <PropertyCard key={property.uuid} property={property} />
       ))}
     </div>
   );
-}
+};
+
+export default PropertyList;
